@@ -1,0 +1,38 @@
+.Navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+.Navbar ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+}
+.Navbar li {
+  padding: 10px 40px;
+  transition: all 0.5s;
+  font-weight: bold;
+  position: relative;
+}
+.Navbar li a {
+  color: white;
+  text-decoration: none;
+}
+.Navbar li:after {
+  content: "";
+  position: absolute;
+  height: 1%;
+  width: 0%;
+  bottom: 0;
+  left: 0;
+
+  border-bottom: 2px solid white;
+  transition: all 0.5s;
+}
+.Navbar li:hover:after {
+  width: 100%;
+}
+.Navbar li:first-child:after {
+  display: none;
+}
