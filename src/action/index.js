@@ -38,9 +38,9 @@ export function getProducts() {
       method: 'POST',
       mode: 'cors',
     })
+      .then((response) => response.json())
       .then(function(response) {
-        dispatch(fetchProductSuccess(response.data));
-        // dispatch({type: 'GET_PRODUCTS', payload: response.data});
+        dispatch(fetchProductSuccess(response.data.products));
       })
       .catch(function(err) {
         // dispatch({type: 'GET_PRODUCTS_REJECTED', payload: err});
