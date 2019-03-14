@@ -8,12 +8,16 @@ import Layout from './hoc/Layout/Layout';
 import Checkout from './containers/pages/Checkout/Checkout';
 import Cart from './containers/pages/Cart/Cart';
 import {connect} from 'react-redux';
+import {getProducts} from './action/index';
 
 class App extends Component {
+  componentDidMount() {
+    const {getProducts1} = this.props;
+    getProducts1();
+  }
   render() {
-    const {hello, sayHello} = this.props;
+    const {hello} = this.props;
     console.log('hello', hello, 'expect to see world');
-    sayHello();
     return (
       <Layout>
         <Navbar />
@@ -31,7 +35,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  sayHello: () => dispatch({type: 'SAY_HELLO'}),
+  getProducts1: () => dispatch(getProducts()),
 });
 
 export default connect(
