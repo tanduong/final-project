@@ -1,9 +1,13 @@
 export const productsQuery = `
 query products{
     products{
-          name,
-      images,
-      price
+        id,
+        name,
+        images{
+            url,
+            alt
+        }
+        price
     }
   }
     `;

@@ -11,18 +11,33 @@ import callApi from "../../../utils/apiCaller";
 class Products extends Component {
   componentDidMount = () => {
     callApi("POST", Query.productsQuery).then(res => {
-      console.log(res);
+      console.log(res.data.data.products);
+      this.setState({
+        products: res.data.data.products
+      });
     });
   };
+  state = {
+    products: []
+  };
+
   render() {
+    var products = this.state.products;
     return (
       <div className={classes.Product}>
         <Header total={3} />
         <Main>
-          <Product img={null} name="ABC" price={30000} />
-          <Product img={null} name="ABC" price={30000} />
-          <Product img={null} name="ABC" price={30000} />
-          <Product img={null} name="ABC" price={30000} />
+          {products.map(product => {
+            return (
+              <Product
+                img={product.images[0].url}
+                name={product}
+                price={30000}
+                alt={product.alt}
+                key={product.id}
+              />
+            );
+          })}
         </Main>
       </div>
     );
